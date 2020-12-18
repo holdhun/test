@@ -1,0 +1,38 @@
+let bip39 = require('bip39');
+let util = require('ethereumjs-util');
+let ethers = require('ethers');
+let EthereumTx = require('ethereumjs-tx').Transaction;
+
+function getWord(){
+    return bip39.generateMnemonic();
+}
+console.log(getWord());
+
+function getWalletByWord(monic){
+    var mnemonic = ethers.Wallet.fromMnemonic(monic);
+    let privateKey = mnemonic.privateKey;
+    let wallet = new ethers.Wallet(privateKey);
+    console.log(wallet);
+    return wallet;
+}
+
+function getWalletByKestore(json,pwd){
+    return ethers.Wallet.fromEncryptedJson(json,pwd);
+}
+
+function getKeystore(wallet,pwd){
+    return wallet.encrypt(pwd);
+}
+
+getKeystore(getWalletByWord(getWord()), "123456").then(json=>{
+    console.log(json)
+    getWalletByKestore(json,"123456").then(wallet=>{
+        console.log(wallet)
+    });
+})
+
+
+
+
+
+
