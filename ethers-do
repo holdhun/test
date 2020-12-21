@@ -31,6 +31,52 @@ getKeystore(getWalletByWord(getWord()), "123456").then(json=>{
     });
 })
 
+var Web3 = require('web3');
+
+let BasicAuthUsername="rpcuser";
+// let BasicAuthPassword="rpc@0.123456@snwallet";
+// let url = "http://35.220.226.91/blockchain";
+let url = "http://34.126.100.120/blockchain";
+let BasicAuthPassword="code@0.123456@snwallet";
+
+
+// var web3 = new Web3(new Web3.providers.HttpProvider(url,BasicAuthUsername, BasicAuthPassword));
+var web3 = new Web3(new Web3.providers.HttpProvider(url, 0, BasicAuthUsername, BasicAuthPassword));
+console.log(web3.version)
+//let addr = web3.eth.accounts;
+// let balance = web3.fromWei(web3.eth.getBalance(addr),"ether");
+// web3.personal.unlockAccount(addr,"jiewoxiaochengming@202008290.123456");
+//
+let balance = web3.eth.getBalance(web3.eth.accounts[0]);
+console.log(balance);
+//
+// let tr = web3.eth.sendTransaction({from:addr,to:"0x7B45A7e1550E556c988EB28343A07072DB1A65B2",value:web3.toWei(100,"ether")});
+// console.log(tr);
+//
+// console.log(web3.eth.getTransaction('0x052eb38c5eac4f1ea7186969a20465ced30bfd88be2896b20d3ab951ca2d2022'));
+// console.log(web3.eth.getTransactionReceipt("0xb97de436f06747c0da76fabd802d0fc5d2686a9bb0d397790a263cd46bc2e022"));
+//
+// let balance2 = web3.fromWei(web3.eth.getBalance("0x7B45A7e1550E556c988EB28343A07072DB1A65B2"),"ether");
+// console.log(balance2);
+
+// let tr = web3.eth.sendTransaction({
+//     from:addr,
+//     to:"0x7B45A7e1550E556c988EB28343A07072DB1A65B2",
+//     value:web3.toWei(0,"ether"),
+//     gas:100000,
+//     gasPrice:web3.toWei(0.00001,"ether"),
+// });
+// console.log(tr);
+// console.log(web3.eth.getTransaction(tr))
+// console.log(web3.eth.getTransactionReceipt("0xb97de436f06747c0da76fabd802d0fc5d2686a9bb0d397790a263cd46bc2e022"));
+// let balance2 = web3.eth.getBalance("0x7B45A7e1550E556c988EB28343A07072DB1A65B2");
+// console.log(balance2);
+
+// const signPromise = web3.eth.accounts.signTransaction(rawTx, privateKey);
+// console.log(web3.eth.gasPrice.toString())
+// console.log(web3.eth.getTransactionReceipt('0x052eb38c5eac4f1ea7186969a20465ced30bfd88be2896b20d3ab951ca2d2022'));
+
+console.log(web3.eth.getBlock(1))
 
 
 
